@@ -1,0 +1,45 @@
+{
+  "logs": [
+    {
+      "id": 1,
+      "message": "Changed network card in server 007",
+      "attention": false,
+      "priority": "Urgent",
+      "ITperson": "Adele Hopkins",
+      "date": "2020-06-22T15:46:10.179Z"
+    },
+    {
+      "id": 2,
+      "message": "Setup 1Password account for the new hire: Leena Li",
+      "attention": false,
+      "priority": "Low",
+      "ITperson": "Ryan Seen",
+      "date": "2020-06-15T11:30:10.179Z"
+    },
+    {
+      "id": 3,
+      "message": "Fixed hard drive on workstation 22B",
+      "attention": true,
+      "priority": "High",
+      "ITperson": "Adele Hopkins",
+      "date": "2020-06-15T11:30:10.179Z"
+    }
+  ],
+  "ITpersons": [
+    {
+      "id": 1,
+      "firstName": "Adele",
+      "lastName": "Hopkins"
+    },
+    {
+      "id": 2,
+      "firstName": "Ryan",
+      "lastName": "Seen"
+    },
+    {
+      "firstname": "Ara",
+      "lastname": "Gebghenkin",
+      "id": 3
+    }
+  ]
+}
