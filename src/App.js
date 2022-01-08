@@ -9,6 +9,7 @@ import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
 import AddButton from './components/buttons/AddButton';
 import AddLogModal from './components/modals/AddLogModal';
+import EditLogModal from './components/modals/EditLogModal';
 
 // Import SASS
 import './App.scss';
@@ -29,6 +30,7 @@ const App = () => {
         <Logs />
         <AddButton />
         <AddLogModal />
+        <EditLogModal />
       </main>
     </Fragment>
   );
