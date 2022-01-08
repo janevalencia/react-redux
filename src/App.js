@@ -7,6 +7,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 // Import Components
 import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
+import AddButton from './components/buttons/AddButton';
 
 // Import SASS
 import './App.scss';
@@ -25,6 +26,7 @@ const App = () => {
       </header>
       <main>
         <Logs />
+        <AddButton />
       </main>
     </Fragment>
   );
