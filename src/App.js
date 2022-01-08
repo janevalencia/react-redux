@@ -1,21 +1,22 @@
-import React, { Fragment, useEffect }from 'react';
+import React, { Fragment, useEffect } from "react";
 
 // Always import the .min version
 import "materialize-css/dist/css/materialize.min.css";
-import M from 'materialize-css/dist/js/materialize.min.js';
+import M from "materialize-css/dist/js/materialize.min.js";
 
 // Import Components
-import SearchBar from './components/layout/SearchBar';
-import Logs from './components/logs/Logs';
-import AddButton from './components/buttons/AddButton';
-import AddLogModal from './components/modals/AddLogModal';
-import EditLogModal from './components/modals/EditLogModal';
+import SearchBar from "./components/layout/SearchBar";
+import Logs from "./components/logs/Logs";
+import AddButton from "./components/buttons/AddButton";
+import AddLogModal from "./components/logs-modals/AddLogModal";
+import EditLogModal from "./components/logs-modals/EditLogModal";
+import AddTechModal from "./components/techs-modals/AddTechModal";
 
 // Import SASS
-import './App.scss';
+import "./App.scss";
 
 const App = () => {
-  useEffect( () => {
+  useEffect(() => {
     // Initialise Materialise JS at the start of the app
     // Now we would be able to use Modals and all the Materialise stuff that requires JS
     M.AutoInit();
@@ -23,7 +24,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <header className='header' id='header'>
+      <header className="header" id="header">
         <SearchBar />
       </header>
       <main>
@@ -31,9 +32,10 @@ const App = () => {
         <AddButton />
         <AddLogModal />
         <EditLogModal />
+        <AddTechModal />
       </main>
     </Fragment>
   );
-}
+};
 
 export default App;
