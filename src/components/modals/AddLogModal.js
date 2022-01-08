@@ -12,9 +12,17 @@ const AddLogModal = () => {
 
   const onSubmit = () => {
     if (message === "" || ITperson === "" || priority === "") {
-        M.toast( {html: 'Invalid submission: Please enter message, IT person, and priority!'} )
+      M.toast({
+        html: "Invalid submission: Please enter message, IT person, and priority!",
+      });
     } else {
       console.log(message, attention, ITperson, priority);
+      
+      // Reset fields
+      setMessage("");
+      setTech("");
+      setPriority("");
+      setAttention(false);
     }
   };
 
