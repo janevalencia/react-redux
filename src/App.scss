@@ -17,7 +17,7 @@ a {
 .container {
     max-width: 1020px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 0;
 }
 
 .grid {
@@ -33,5 +33,9 @@ a {
 .flex {
   &__justify-between {
     justify-content: space-between;
+  }
+
+  &__align-center {
+    align-items: center;
   }
 }

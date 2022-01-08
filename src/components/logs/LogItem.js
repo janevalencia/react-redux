@@ -17,7 +17,7 @@ const LogItem = ({ log }) => {
           {message}
         </a>
 
-        <div className="flex-row flex__justify-between">
+        <div className="flex-row flex__justify-between flex__align-center">
             <span className="grey-text">
                 <span className="black-text">Issue #{id}</span> last updated by {` `}
                 <span className="black-text">{tech}</span> on {` `}
