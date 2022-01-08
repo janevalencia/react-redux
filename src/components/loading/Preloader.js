@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const Preloader = () => {
-    return (
-        <div className='progress teal lighten-3'>
-            <div class="indeterminate"></div>
-        </div>
-    )
-}
+  return (
+    <div className="container">
+      <div className="progress teal lighten-3">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+  );
+};
 
-export default Preloader
+export default Preloader;
