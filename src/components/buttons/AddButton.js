@@ -7,7 +7,7 @@ const AddButton = () => {
         href="#add-log-modal"
         className="btn-floating btn-large teal darken-2 modal-trigger"
       >
-        <i class="large material-icons">add</i>
+        <i className="large material-icons">note_add</i>
       </a>
       
       <ul>
@@ -16,7 +16,7 @@ const AddButton = () => {
             href="#tech-list-modal"
             className="btn-floating btn-large blue lighten-2 modal-trigger"
           >
-            <i class="material-icons">person</i>
+            <i className="material-icons">person</i>
           </a>
         </li>
 
@@ -25,7 +25,7 @@ const AddButton = () => {
             href="#tech-list-modal"
             className="btn-floating btn-large green lighten-2 modal-trigger"
           >
-            <i class="material-icons">person_add</i>
+            <i className="material-icons">person_add</i>
           </a>
         </li>
       </ul>
