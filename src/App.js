@@ -1,10 +1,14 @@
-import React, { useEffect }from 'react';
+import React, { Fragment, useEffect }from 'react';
 
 // Always import the .min version
 import "materialize-css/dist/css/materialize.min.css";
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-import './App.css';
+// Import Components
+import SearchBar from './components/layout/SearchBar';
+
+// Import SASS
+import './App.scss';
 
 const App = () => {
   useEffect( () => {
@@ -14,9 +18,11 @@ const App = () => {
   });
 
   return (
-    <div className="App">
-    My App
-    </div>
+    <Fragment>
+      <header className='header' id='header'>
+        <SearchBar />
+      </header>
+    </Fragment>
   );
 }
 
