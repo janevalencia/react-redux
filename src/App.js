@@ -28,13 +28,13 @@ const App = () => {
       <header className="header" id="header">
         <SearchBar />
       </header>
-      <main>
-        <Logs />
-        <TechListModal />
+      <main className="container">
         <AddButton />
+        <TechListModal />
         <AddLogModal />
         <EditLogModal />
         <AddTechModal />
+        <Logs />
       </main>
     </Fragment>
   );

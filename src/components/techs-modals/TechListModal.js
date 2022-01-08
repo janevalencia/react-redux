@@ -19,7 +19,7 @@ const TechListModal = () => {
 
   // Return a promise
   const getTechs = async () => {
-    setLoading(true);
+    setLoading(true); 
 
     // directly fetching API uri because we have set proxy in package.json
     const res = await fetch("/ITpersons");
@@ -30,12 +30,12 @@ const TechListModal = () => {
   };
 
   return (
-    <div id="tech-list-modal" className="modal">
+    <div id="tech-list-modal" className="modal modal-box">
       <h4>Technicians</h4>
       <div className="modal-content">
         <ul className="collection">
-          {!loading ?
-            ITpersons.map((tech) => <TechItem key={tech.id} tech={tech} />) : `None`}
+          {!loading && ITpersons.length !== 0 ?
+            ITpersons.map((tech) => <TechItem key={tech.id} tech={tech} />) : console.log('something is up here.')}
         </ul>
       </div>
     </div>

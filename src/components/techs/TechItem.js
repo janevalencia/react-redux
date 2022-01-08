@@ -6,10 +6,12 @@ const TechItem = ({ tech }) => {
 
   return (
     <li className="collection-item">
-      <div>{firstname} {lastname}</div>
-      <a href="#!" className="secondary-content">
-        <i className="material-icons teal-text">delete</i>
-      </a>
+      <div className="flex-row">
+        <div>{firstname} {lastname}</div>
+        <a href="#!" className="secondary-content">
+          <i className="material-icons teal-text">delete</i>
+        </a>
+      </div>
     </li>
   );
 };
