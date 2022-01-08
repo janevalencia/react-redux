@@ -6,6 +6,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 
 // Import Components
 import SearchBar from './components/layout/SearchBar';
+import Logs from './components/logs/Logs';
 
 // Import SASS
 import './App.scss';
@@ -22,6 +23,9 @@ const App = () => {
       <header className='header' id='header'>
         <SearchBar />
       </header>
+      <main>
+        <Logs />
+      </main>
     </Fragment>
   );
 }
