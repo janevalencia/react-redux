@@ -13,7 +13,7 @@ const AddButton = () => {
       <ul>
         <li>
           <a
-            href="#tech-list-modal"
+            href="#list-tech-modal"
             className="btn-floating btn-large blue lighten-2 modal-trigger"
           >
             <i className="material-icons">person</i>
@@ -22,7 +22,7 @@ const AddButton = () => {
 
         <li>
           <a
-            href="#tech-list-modal"
+            href="#add-tech-modal"
             className="btn-floating btn-large green lighten-2 modal-trigger"
           >
             <i className="material-icons">person_add</i>
