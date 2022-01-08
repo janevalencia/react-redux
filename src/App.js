@@ -8,6 +8,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
 import AddButton from './components/buttons/AddButton';
+import AddLogModal from './components/modals/AddLogModal';
 
 // Import SASS
 import './App.scss';
@@ -27,6 +28,7 @@ const App = () => {
       <main>
         <Logs />
         <AddButton />
+        <AddLogModal />
       </main>
     </Fragment>
   );
