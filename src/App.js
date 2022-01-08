@@ -11,6 +11,7 @@ import AddButton from "./components/buttons/AddButton";
 import AddLogModal from "./components/logs-modals/AddLogModal";
 import EditLogModal from "./components/logs-modals/EditLogModal";
 import AddTechModal from "./components/techs-modals/AddTechModal";
+import TechListModal from "./components/techs-modals/TechListModal";
 
 // Import SASS
 import "./App.scss";
@@ -29,6 +30,7 @@ const App = () => {
       </header>
       <main>
         <Logs />
+        <TechListModal />
         <AddButton />
         <AddLogModal />
         <EditLogModal />

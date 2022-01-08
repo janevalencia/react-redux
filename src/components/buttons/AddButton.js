@@ -9,23 +9,22 @@ const AddButton = () => {
       >
         <i className="large material-icons">note_add</i>
       </a>
-      
-      <ul>
-        <li>
-          <a
-            href="#list-tech-modal"
-            className="btn-floating btn-large blue lighten-2 modal-trigger"
-          >
-            <i className="material-icons">person</i>
-          </a>
-        </li>
 
+      <ul>
         <li>
           <a
             href="#add-tech-modal"
             className="btn-floating btn-large green lighten-2 modal-trigger"
           >
             <i className="material-icons">person_add</i>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#tech-list-modal"
+            className="btn-floating btn-large blue lighten-2 modal-trigger"
+          >
+            <i className="material-icons">person</i>
           </a>
         </li>
       </ul>
