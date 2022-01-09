@@ -25,12 +25,13 @@ export const getLogs = () => async (dispatch, getState) => {
   }
 };
 
-// Set loading to true
-export const setLoading = () => (dispatch) => {
+// Set loading to true, NOT ASYNC, don't require side effect (i.e. requesting API)
+// then simple return is fine
+export const setLoading = () => {
   // Return object
-  dispatch({
+  return {
     type: types.SET_LOADING,
-  });
+  };
 };
 
 // Create new log, an ASYNC operation
@@ -69,7 +70,7 @@ export const deleteLog = (id) => async (dispatch) => {
 
     // DELETE request with format /api/id (following JSON Fake API)
     await fetch(`/logs/${id}`, {
-      method: "DELETE"
+      method: "DELETE",
     });
 
     // DISPATCHING ACTION TO REDUCER (IF NO ERROR)
@@ -85,3 +86,46 @@ export const deleteLog = (id) => async (dispatch) => {
     });
   }
 };
+
+// Update log, an ASYNC operation
+export const updateLog = (log) => async (dispatch) => {
+  try {
+    // PUT request to update the specific log
+    const res = await fetch(`/logs/${log.id}`, {
+      method: "PUT",
+      body: JSON.stringify(log),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+
+    // DISPATCHING ACTION TO REDUCER (IF NO ERROR)
+    dispatch({
+      type: types.UPDATE_LOG,
+      payload: data,
+    });
+  } catch (error) {
+    // Return error if found
+    dispatch({
+      type: types.LOGS_ERROR,
+      payload: error.response.data,
+    });
+  }
+};
+
+// Set Current Active Log on the Edit Form before we can actually start editing
+export const setCurrentLog = (log) => {
+  return {
+    type: types.SET_CURRENT_LOG,
+    payload: log
+  }
+}
+
+// Clear Current Log for the next use
+export const clearCurrentLog = () => {
+  return {
+    type: types.CLEAR_CURRENT_LOG,
+  }
+}

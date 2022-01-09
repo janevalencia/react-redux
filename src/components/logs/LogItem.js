@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 
 // Connect Redux
 import { connect } from "react-redux";
-import { deleteLog } from "../../actions/logs/logActions";
+import { deleteLog, setCurrentLog } from "../../actions/logs/logActions";
 
 // So we can use Toast for input-error handling
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const LogItem = ({ log, deleteLog}) => {
+const LogItem = ({ log, deleteLog, setCurrentLog}) => {
   
   const { id, message, priority, ITperson: tech, date } = log;
 
@@ -53,6 +53,7 @@ const LogItem = ({ log, deleteLog}) => {
           className={`modal-trigger ${
             log.attention ? `red-text` : `teal-text`
           }`}
+          onClick={() => setCurrentLog(log)}
         >
           {message}
         </a>
@@ -82,6 +83,7 @@ const LogItem = ({ log, deleteLog}) => {
 LogItem.propTypes = {
   log: PropTypes.object.isRequired,
   deleteLog: PropTypes.func.isRequired,
+  setCurrentLog: PropTypes.func.isRequired,
 };
 
-export default connect(null, { deleteLog })(LogItem);
+export default connect(null, { deleteLog, setCurrentLog })(LogItem);

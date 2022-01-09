@@ -36,6 +36,34 @@ const logReducer = (state = initialState, action) => {
                     loading: false
                 }
             )
+        case types.UPDATE_LOG:
+            return (
+                {
+                    ...state,
+                    logs: state.logs.map(log => {
+                        if (log.id === action.payload.id) {
+                            return action.payload
+                        } else {
+                            return log
+                        }
+                        // return log.id === action.payload.id ? action.payload : log
+                    })
+                }
+            )
+        case types.SET_CURRENT_LOG:
+            return (
+                {
+                    ...state,
+                    current: action.payload
+                }
+            )
+        case types.CLEAR_CURRENT_LOG:
+            return (
+                {
+                    ...state,
+                    current: null
+                }
+            )
         case types.SET_LOADING:
             return (
                 {
