@@ -1,35 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+
+// Connect with Redux
+import { connect } from "react-redux"; // Connect redux to this component
+import { getLogs } from "../../actions/logs/logActions"; // Import the action we need
 
 // Import Component
 import LogItem from "./LogItem";
 import Preloader from "../loading/Preloader";
 
-const Logs = () => {
-  // State
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(false);
+// Passing in whatever you put in connect(...) to here as it is now your prop
+// including the getLogs() action function
+const Logs = ({ log, getLogs }) => {
+  // Deconstruct the log object (the object we got from reducer payload)
+  const { logs, loading } = log;
 
   // Only run on the first render as noted with []
   useEffect(() => {
+    // Run the getLogs() action
     getLogs();
 
     // eslint-disable-next-line
   }, []);
 
-  // Return a promise
-  const getLogs = async () => {
-    setLoading(true);
-
-    // directly fetching API uri because we have set proxy in package.json
-    const res = await fetch("/logs");
-    const data = await res.json();
-
-    setLogs(data);
-    setLoading(false);
-  };
-
   // Will change this to material UI later
-  if (loading) return <Preloader />;
+  if (loading || logs === null) return <Preloader />;
 
   return (
     <section className="container">
@@ -40,11 +35,20 @@ const Logs = () => {
         {!loading && logs.length === 0 ? (
           <p className="center">No logs found.</p>
         ) : (
-          logs.map(log => <LogItem key={log.id} log={log} />)
+          logs.map((log) => <LogItem key={log.id} log={log} />)
         )}
       </ul>
     </section>
   );
 };
 
-export default Logs;
+Logs.propTypes = {
+  log: PropTypes.object.isRequired,
+};
+
+// Set what we need from App-Level-State and that will be the prop of this component
+const mapStateToProps = (state) => ({
+  log: state.logReducer,
+});
+
+export default connect(mapStateToProps, { getLogs })(Logs); // everytime you connect redux, this is how you export component
