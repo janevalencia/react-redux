@@ -23,7 +23,6 @@ const Logs = ({ log, getLogs }) => {
     // eslint-disable-next-line
   }, []);
 
-  // Will change this to material UI later
   if (loading || logs === null) return <Preloader />;
 
   return (
@@ -51,4 +50,5 @@ const mapStateToProps = (state) => ({
   log: state.logReducer,
 });
 
-export default connect(mapStateToProps, { getLogs })(Logs); // everytime you connect redux, this is how you export component
+// everytime you connect redux, this is how you export component
+export default connect(mapStateToProps, { getLogs })(Logs); 
