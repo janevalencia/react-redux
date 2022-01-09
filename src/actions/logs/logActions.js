@@ -3,8 +3,8 @@ import * as types from "./types";
 
 // Define actions, return Object
 
-// Get All Logs
-export const getLogs = async (dispatch, getState) => {
+// Get All Logs, an ASYNC operation
+export const getLogs = () => async (dispatch, getState) => {
   try {
     setLoading();
 
