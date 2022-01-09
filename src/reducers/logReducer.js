@@ -21,6 +21,13 @@ const logReducer = (state = initialState, action) => {
                     loading: false
                 }
             )
+        case types.CREATE_LOG:
+            return (
+                {
+                    ...state,
+                    logs: [...state.logs, action.payload]
+                }
+            )
         case types.SET_LOADING:
             return (
                 {
