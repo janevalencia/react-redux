@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import M from "materialize-css/dist/js/materialize.min.js";
-
 // Import Component
 import TechItem from "../techs/TechItem";
 
