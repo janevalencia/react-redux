@@ -43,6 +43,7 @@ const Logs = ({ log, getLogs }) => {
 
 Logs.propTypes = {
   log: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired,
 };
 
 // Set what we need from App-Level-State and that will be the prop of this component
