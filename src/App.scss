@@ -1,0 +1,47 @@
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  margin: 0 0 3rem;
+}
+
+.container {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex {
+  &__justify-between {
+    justify-content: space-between;
+  }
+
+  &__align-center {
+    align-items: center;
+  }
+}
+
+.modal-box {
+  width: 75%;
+  height: auto;
+  padding: 2rem;
+}

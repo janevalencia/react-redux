@@ -6,13 +6,19 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.29.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-moment": "^1.1.1",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
+    "serve-backend": "json-server --watch db.json --port 8001",
+    "dev": "concurrently \"npm start\" \"npm run serve-backend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -37,6 +43,8 @@
   },
   "devDependencies": {
     "concurrently": "^7.0.0",
-    "json-server": "^0.17.0"
-  }
+    "json-server": "^0.17.0",
+    "sass": "^1.46.0"
+  },
+  "proxy": "http://localhost:8001"
 }
