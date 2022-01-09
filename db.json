@@ -1,14 +1,6 @@
 {
   "logs": [
     {
-      "id": 1,
-      "message": "Changed network card in server 007",
-      "attention": false,
-      "priority": "Urgent",
-      "ITperson": "Adele Hopkins",
-      "date": "2020-06-22T15:46:10.179Z"
-    },
-    {
       "id": 2,
       "message": "Setup 1Password account for the new hire: Leena Li",
       "attention": false,
@@ -23,14 +15,6 @@
       "priority": "High",
       "ITperson": "Adele Hopkins",
       "date": "2020-06-18T11:30:10.179Z"
-    },
-    {
-      "message": "Test",
-      "attention": true,
-      "ITperson": "1",
-      "priority": "High",
-      "date": "2022-01-09T11:12:56.529Z",
-      "id": 4
     },
     {
       "message": "Change network card on Server 110",

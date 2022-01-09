@@ -28,6 +28,14 @@ const logReducer = (state = initialState, action) => {
                     logs: [...state.logs, action.payload]
                 }
             )
+        case types.DELETE_LOG:
+            return (
+                {
+                    ...state,
+                    logs: state.logs.filter( log => log.id !== action.payload),
+                    loading: false
+                }
+            )
         case types.SET_LOADING:
             return (
                 {

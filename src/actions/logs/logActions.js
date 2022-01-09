@@ -61,3 +61,27 @@ export const createLog = (log) => async (dispatch) => {
     });
   }
 };
+
+// Delete log, an ASYNC operation
+export const deleteLog = (id) => async (dispatch) => {
+  try {
+    setLoading();
+
+    // DELETE request with format /api/id (following JSON Fake API)
+    await fetch(`/logs/${id}`, {
+      method: "DELETE"
+    });
+
+    // DISPATCHING ACTION TO REDUCER (IF NO ERROR)
+    dispatch({
+      type: types.DELETE_LOG,
+      payload: id,
+    });
+  } catch (error) {
+    // Return error if found
+    dispatch({
+      type: types.LOGS_ERROR,
+      payload: error.response.data,
+    });
+  }
+};

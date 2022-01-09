@@ -2,7 +2,15 @@ import React from "react";
 import Moment from "react-moment";
 import PropTypes from "prop-types";
 
-const LogItem = ({ log }) => {
+// Connect Redux
+import { connect } from "react-redux";
+import { deleteLog } from "../../actions/logs/logActions";
+
+// So we can use Toast for input-error handling
+import M from "materialize-css/dist/js/materialize.min.js";
+
+const LogItem = ({ log, deleteLog}) => {
+  
   const { id, message, priority, ITperson: tech, date } = log;
 
   let priorityColor, priorityIcon = "";
@@ -21,6 +29,20 @@ const LogItem = ({ log }) => {
       priorityColor = "teal-text";
       priorityIcon = "arrow_drop_down";
       break;
+  }
+
+  const onDelete = () => {
+    if (id !== null || id !== '') {
+      // Excute deleteLog() action
+      deleteLog(id);
+      
+      // On succeed (200)
+      M.toast({
+        html: `Successfully delete Log Issue #${id}`,
+      });
+    } else {
+      console.error('Error: cannot delete. ID null!')
+    }
   }
 
   return (
@@ -48,7 +70,7 @@ const LogItem = ({ log }) => {
             <Moment format="dddd, DD-MM-YYYY hh:mm:ss A">{date}</Moment>
           </span>
 
-          <a href="#!">
+          <a href="#!" onClick={onDelete}>
             <i className="material-icons teal-text">delete</i>
           </a>
         </div>
@@ -59,6 +81,7 @@ const LogItem = ({ log }) => {
 
 LogItem.propTypes = {
   log: PropTypes.object.isRequired,
+  deleteLog: PropTypes.func.isRequired,
 };
 
-export default LogItem;
+export default connect(null, { deleteLog })(LogItem);
