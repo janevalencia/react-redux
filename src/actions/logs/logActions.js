@@ -115,6 +115,30 @@ export const updateLog = (log) => async (dispatch) => {
   }
 };
 
+// Search logs
+export const searchLogs = (input) => async (dispatch) => {
+  try {
+    setLoading();
+
+    // JSON FAKE API endpoint allows us to query directly
+    // Depending on your server API endpoint, this could be different
+    const res = await fetch(`/logs?q=${input}`);
+    const data = await res.json();
+
+    // DISPATCHING ACTION TO REDUCER (IF NO ERROR)
+    dispatch({
+      type: types.SEARCH_LOGS,
+      payload: data,
+    });
+  } catch (error) {
+    // Return error if found
+    dispatch({
+      type: types.LOGS_ERROR,
+      payload: error.response.data,
+    });
+  }
+};
+
 // Set Current Active Log on the Edit Form before we can actually start editing
 export const setCurrentLog = (log) => {
   return {
