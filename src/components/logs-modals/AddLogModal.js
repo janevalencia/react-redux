@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 // So we can use Toast for input-error handling in Modal
 import M from "materialize-css/dist/js/materialize.min.js";
 
+// Connect to Redux
+import { connect } from "react-redux";
+import { createLog } from "../../actions/logs/logActions";
+
+// Import Sub-Component
+import TechSelectOptions from "../techs/TechSelectOptions";
+
 // This will pop-up an Add Form
-const AddLogModal = () => {
+const AddLogModal = ({ createLog }) => {
+  // Would still need this since the form value will be passed onto where as it changes
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [ITperson, setTech] = useState("");
@@ -16,7 +25,17 @@ const AddLogModal = () => {
         html: "Invalid submission: Please enter message, IT person, and priority!",
       });
     } else {
-      console.log(message, attention, ITperson, priority);
+      // Create log object
+      const log = {
+        message,
+        attention,
+        ITperson,
+        priority,
+        date: new Date().toISOString()
+      }
+      
+      // Execute createLog() action
+      createLog(log);
       
       // Reset fields
       setMessage("");
@@ -55,9 +74,7 @@ const AddLogModal = () => {
               <option value="" disabled>
                 Select IT Person (Required)
               </option>
-              <option value="1">Person 1</option>
-              <option value="2">Person 2</option>
-              <option value="3">Person 3</option>
+              <TechSelectOptions />
             </select>
           </div>
         </div>
@@ -114,4 +131,10 @@ const AddLogModal = () => {
   );
 };
 
-export default AddLogModal;
+AddLogModal.propTypes = {
+  createLog: PropTypes.func.isRequired,
+};
+
+// Not bringing in any state, hence the 'null' prop
+// Only bring in the action we need, that is createLog()
+export default connect(null, { createLog })(AddLogModal);

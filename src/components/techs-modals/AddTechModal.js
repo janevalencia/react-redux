@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 // So we can use Toast for input-error handling in Modal
 import M from "materialize-css/dist/js/materialize.min.js";
 
+// Connect Redux
+import { connect } from "react-redux";
+import { createTech } from "../../actions/techs/techActions";
+
+
 // This will pop-up an Add Form
-const AddTechModal = () => {
+const AddTechModal = ( {createTech} ) => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
 
@@ -14,7 +20,19 @@ const AddTechModal = () => {
         html: "Invalid submission: Please enter firstname!",
       });
     } else {
-      console.log(firstname, lastname);
+      // Setup new technician data
+      const tech = {
+        firstname,
+        lastname: lastname ?? ''
+      }
+
+      // POST new technician
+      createTech(tech);
+
+      // Toast success message!
+      M.toast({
+        html: `Successfully added: ${firstname} ${lastname}`,
+      });
 
       // Reset fields
       setFirstName("");
@@ -67,4 +85,8 @@ const AddTechModal = () => {
   );
 };
 
-export default AddTechModal;
+AddTechModal.propTypes = {
+  createTech: PropTypes.func.isRequired,
+}
+
+export default connect(null, { createTech })(AddTechModal);

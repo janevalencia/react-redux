@@ -1,8 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 
-// Always import the .min version
+// Materialise-CSS: Always import the .min version
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
+
+// Import Redux Provider: which provides STORE to our App
+import { Provider } from "react-redux";
+import store from "./store";
 
 // Import Components
 import SearchBar from "./components/layout/SearchBar";
@@ -24,19 +28,22 @@ const App = () => {
   });
 
   return (
-    <Fragment>
-      <header className="header" id="header">
-        <SearchBar />
-      </header>
-      <main className="container">
-        <AddButton />
-        <TechListModal />
-        <AddLogModal />
-        <EditLogModal />
-        <AddTechModal />
-        <Logs />
-      </main>
-    </Fragment>
+    // Wrap the App with Redux Provider so we can start using the STORE
+    <Provider store={store}>
+      <Fragment>
+        <header className="header" id="header">
+          <SearchBar />
+        </header>
+        <main className="container">
+          <AddButton />
+          <TechListModal />
+          <AddLogModal />
+          <EditLogModal />
+          <AddTechModal />
+          <Logs />
+        </main>
+      </Fragment>
+    </Provider>
   );
 };
 
