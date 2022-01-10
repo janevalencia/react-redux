@@ -1,5 +1,5 @@
 // Import action types
-import * as types from '../actions/logs/types';
+import * as types from "../actions/logs/types";
 
 
 // Setup initial state
@@ -85,7 +85,7 @@ const logReducer = (state = initialState, action) => {
             return (
                 {
                     ...state,
-                    error: action.payload
+                    errors: action.payload
                 }
             )
         default:

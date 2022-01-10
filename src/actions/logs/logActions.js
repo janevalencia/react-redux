@@ -20,7 +20,7 @@ export const getLogs = () => async (dispatch, getState) => {
     // Return error if found
     dispatch({
       type: types.LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -58,7 +58,7 @@ export const createLog = (log) => async (dispatch) => {
     // Return error if found
     dispatch({
       type: types.LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -82,7 +82,7 @@ export const deleteLog = (id) => async (dispatch) => {
     // Return error if found
     dispatch({
       type: types.LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -110,7 +110,7 @@ export const updateLog = (log) => async (dispatch) => {
     // Return error if found
     dispatch({
       type: types.LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -134,7 +134,7 @@ export const searchLogs = (input) => async (dispatch) => {
     // Return error if found
     dispatch({
       type: types.LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
