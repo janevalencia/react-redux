@@ -17,11 +17,39 @@ export const getTechs = () => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-      // if error found
-      dispatch({
-          type: types.TECHS_ERROR,
-          payload: error.response.statusText
-      })
+    // if error found
+    dispatch({
+      type: types.TECHS_ERROR,
+      payload: error,
+    });
+  }
+};
+
+// POST tech, an ASYNC operation
+export const createTech = (tech) => async (dispatch) => {
+  try {
+    // POST new technician data to resource
+    const res = await fetch("/ITpersons", {
+      method: "POST",
+      body: JSON.stringify(tech),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+
+    // DISPATCH TO REDUCER (if success)
+    dispatch({
+      type: types.CREATE_TECH,
+      payload: data,
+    });
+  } catch (error) {
+    // if error found
+    dispatch({
+      type: types.TECHS_ERROR,
+      payload: error,
+    });
   }
 };
 

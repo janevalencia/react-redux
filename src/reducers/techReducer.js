@@ -17,6 +17,13 @@ const techReducer = (state = initialState, action) => {
                     loading: false
                 }
             )
+        case types.CREATE_TECH:
+            return (
+                {
+                    ...state,
+                    techs: [...state.techs, action.payload]
+                }
+            )
         case types.SET_LOADING:
             return (
                 {
