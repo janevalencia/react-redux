@@ -53,6 +53,30 @@ export const createTech = (tech) => async (dispatch) => {
   }
 };
 
+// DELETE tech, an ASYNC operation
+export const deleteTech = (id) => async (dispatch) => {
+  try {
+    setLoading();
+    
+    // DELETE technician data from resource
+    await fetch(`/ITpersons/${id}`, {
+      method: "DELETE",
+    });
+
+    // DISPATCH TO REDUCER (if success)
+    dispatch({
+      type: types.DELETE_TECH,
+      payload: id,
+    });
+  } catch (error) {
+    // if error found
+    dispatch({
+      type: types.TECHS_ERROR,
+      payload: error,
+    });
+  }
+};
+
 // Set loading to true
 export const setLoading = () => {
   return {
