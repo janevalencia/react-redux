@@ -8,6 +8,9 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from "react-redux";
 import { createLog } from "../../actions/logs/logActions";
 
+// Import Sub-Component
+import TechSelectOptions from "../techs/TechSelectOptions";
+
 // This will pop-up an Add Form
 const AddLogModal = ({ createLog }) => {
   // Would still need this since the form value will be passed onto where as it changes
@@ -71,9 +74,7 @@ const AddLogModal = ({ createLog }) => {
               <option value="" disabled>
                 Select IT Person (Required)
               </option>
-              <option value="1">Person 1</option>
-              <option value="2">Person 2</option>
-              <option value="3">Person 3</option>
+              <TechSelectOptions />
             </select>
           </div>
         </div>

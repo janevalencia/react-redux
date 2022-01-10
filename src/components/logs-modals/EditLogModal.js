@@ -8,6 +8,9 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from "react-redux";
 import { updateLog, clearCurrentLog } from "../../actions/logs/logActions";
 
+// Import Sub-Component
+import TechSelectOptions from "../techs/TechSelectOptions";
+
 // This will pop-up an Add Form
 const EditLogModal = ({ current, updateLog, clearCurrentLog }) => {
   const [message, setMessage] = useState("");
@@ -85,12 +88,7 @@ const EditLogModal = ({ current, updateLog, clearCurrentLog }) => {
               className="browser-default"
               onChange={(e) => setTech(e.target.value)}
             >
-              <option value="" disabled>
-                Select IT Person (Required)
-              </option>
-              <option value="1">Person 1</option>
-              <option value="2">Person 2</option>
-              <option value="3">Person 3</option>
+              <TechSelectOptions />
             </select>
           </div>
         </div>
@@ -104,9 +102,6 @@ const EditLogModal = ({ current, updateLog, clearCurrentLog }) => {
               className="browser-default"
               onChange={(e) => setPriority(e.target.value)}
             >
-              <option value="" disabled>
-                Select Priority (Required)
-              </option>
               <option value="Urgent">Urgent</option>
               <option value="High">High</option>
               <option value="Low">Low</option>
