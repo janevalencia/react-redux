@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
 // Import Component
 import TechItem from "../techs/TechItem";
 
-const TechListModal = () => {
-  // State
-  const [ITpersons, setTech] = useState([]);
-  const [loading, setLoading] = useState(false);
+// Connect Redux
+import { connect } from "react-redux";
+import { getTechs } from "../../actions/techs/techActions";
+
+const TechListModal = ( {tech, getTechs} ) => {
+  // Deconstruct tech state
+  const { techs: ITpersons, loading } = tech;
 
   // Only run on the first render as noted with []
   useEffect(() => {
@@ -15,29 +19,27 @@ const TechListModal = () => {
     // eslint-disable-next-line
   }, []);
 
-  // Return a promise
-  const getTechs = async () => {
-    setLoading(true); 
-
-    // directly fetching API uri because we have set proxy in package.json
-    const res = await fetch("/ITpersons");
-    const data = await res.json();
-
-    setTech(data);
-    setLoading(false);
-  };
-
   return (
     <div id="tech-list-modal" className="modal modal-box">
       <h4>Technicians</h4>
       <div className="modal-content">
         <ul className="collection">
-          {!loading && ITpersons.length !== 0 ?
-            ITpersons.map((tech) => <TechItem key={tech.id} tech={tech} />) : console.log('something is up here.')}
+          {!loading && ITpersons !== null ?
+            ITpersons.map((tech) => <TechItem key={tech.id} tech={tech} />) : <li>No technicians.</li>}
         </ul>
       </div>
     </div>
   );
 };
 
-export default TechListModal;
+TechListModal.propTypes = {
+  tech: PropTypes.object.isRequired,
+  getTechs: PropTypes.func.isRequired,
+};
+
+
+const mapStateToProps = (state) => ({
+  tech: state.tech // tech is key for techReducer (in rootReducer index.js)
+});
+
+export default connect(mapStateToProps, { getTechs })(TechListModal);
